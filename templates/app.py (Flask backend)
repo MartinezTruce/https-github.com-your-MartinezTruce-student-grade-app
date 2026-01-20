@@ -1,0 +1,21 @@
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+@app.route("/", methods=["GET", "POST"])
+def index():
+    average = None
+    name = ""
+
+    if request.method == "POST":
+        name = request.form["name"]
+        grade1 = float(request.form["grade1"])
+        grade2 = float(request.form["grade2"])
+        grade3 = float(request.form["grade3"])
+
+        average = (grade1 + grade2 + grade3) / 3
+
+    return render_template("index.html", average=average, name=name)
+
+if __name__ == "__main__":
+    app.run(debug=True)
