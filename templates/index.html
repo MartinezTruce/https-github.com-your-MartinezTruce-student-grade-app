@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Grade App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <h1>Student Grade Web App</h1>
+
+    <form method="POST">
+        <label>Student Name:</label><br>
+        <input type="text" name="name" required><br><br>
+
+        <label>Grade 1:</label><br>
+        <input type="number" name="grade1" required><br><br>
+
+        <label>Grade 2:</label><br>
+        <input type="number" name="grade2" required><br><br>
+
+        <label>Grade 3:</label><br>
+        <input type="number" name="grade3" required><br><br>
+
+        <button type="submit">Compute Average</button>
+    </form>
+
+    {% if average is not none %}
+        <h2>Result</h2>
+        <p>Name: {{ name }}</p>
+        <p>Average Grade: {{ average }}</p>
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
